@@ -5,7 +5,7 @@ import java.util.Date;
 import com.google.gson.GsonBuilder;
 
 public class Block {
-	
+	public int index;
 	public String hash;
 	public String previousHash; 
 	public String merkleRoot;
@@ -14,12 +14,21 @@ public class Block {
 	public int nonce;
 	
 	//Block Constructor.  
-	public Block(String previousHash ) {
+	public Block(int index ,String previousHash ) {
+		this.index = index;
 		this.previousHash = previousHash;
 		this.timeStamp = new Date().getTime();		
 		this.hash = calculateHash(); 
 	}
 	
+		
+	
+	public int getIndex() {
+		return index;
+	}
+
+
+
 	//Calculate hash of block
 	public String calculateHash() {
 		String calculatedhash = StringUtil.applySha256( 
